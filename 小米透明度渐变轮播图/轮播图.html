@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src=jquery-1.12.2.min.js></script>
+    <script src=lunbotu.js></script>
+    <style>
+        .bigbox{
+            width: 992px;
+            height: 420px;
+            border:1px solid pink;
+            margin: 0 auto;
+            position: relative;
+        }
+        .picture{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity:0;
+            /*display: none;*/
+        }
+        .left{
+            background: url("images/arr.png") 83px;
+            width: 41.5px;
+            height: 69px;
+            z-index: 999;
+            position: absolute;
+            top:50%;
+            transform:translateY(-50%);
+            left: 0px;
+        }
+        .right{
+            background: url("images/arr.png")41.5px;
+            width: 41px;
+            height: 69px;
+            z-index: 999;
+            top:50%;
+            transform:translateY(-50%);
+            position: absolute;
+            right: 0px;
+        }
+        .appre{
+            animation:appre 2s ease-out 1;
+            opacity:1
+        }
+        @keyframes appre {
+            0%{opacity:0}
+            100%{opacity:1}
+        }
+        .out{
+            animation:out 2s ease-out 1;
+            opacity:0
+        }
+        @keyframes out {
+            0%{opacity:1}
+            100%{opacity:0}
+        }
+        ul{
+            position: absolute;
+            bottom: -6px;
+            right: 19px;
+        }
+        li{
+
+            float: left;
+            width: 35px;
+            height: 25px;
+            border: 1px solid lightgray;
+            margin-right: 13px ;
+
+            list-style:none;
+        }
+        .list{
+            color: white;
+            width: 35px;
+            height: 25px;
+            opacity: 0.5;
+            background: gray;
+            text-align: center;
+        }
+        .list_on{
+            color: white;
+            width: 35px;
+            height: 25px;
+            opacity: 1;
+            background: gray;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class=bigbox>
+        <div class="picture appre">
+            <img src="images/1.jpg" alt="">
+        </div>
+        <div class="picture">
+            <img src="images/2.jpg" alt="">
+        </div>
+        <div class="picture">
+            <img src="images/3.jpg" alt="">
+        </div>
+        <div class="picture">
+            <img src="images/4.jpg" alt="">
+        </div>
+        <div class="picture">
+            <img src="images/5.jpg" alt="">
+        </div>
+        <div class=left >
+
+        </div>
+        <div class=right>
+        </div>
+        <ul >
+            <li class="littlemenu">
+                <div class="list list_on">1</div>
+            </li>
+            <li class="littlemenu"><div class="list">2</div></li>
+            <li class="littlemenu"><div class="list">3</div></li>
+            <li class="littlemenu"><div class="list">4</div></li>
+            <li class="littlemenu"><div class="list">5</div></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+//转换
+var time=setInterval(right,3000);
+//var time2=setInterval(left,100);
+//var time3=setInterval(i=i,10);
+//clearInterval(time2);
+$(".right").click(right);
+$(".left").click(left);
+//    左右
+$(".left").hover(function () {
+    $(this).css("background","url('images/arr.png') 0px");
+    clearInterval(time);
+},function () {
+    $(this).css("background","url('images/arr.png') 83px");
+    time=setInterval(right,3000);
+});
+$(".right").hover(function () {
+    $(this).css("background","url('images/arr.png') 124.5px");
+    clearInterval(time);
+},function () {
+    $(this).css("background","url('images/arr.png') 41.5px");
+    time=setInterval(right,3000);
+});
+$(".littlemenu").hover(function () {
+    clearInterval(time);
+    var index = $(this).index();
+//    console.log(index);
+    time2 = setInterval(function(){
+        right();
+        if(index == i){
+            clearInterval(time2);
+        }
+    },300);
+
+
+//    time2=setInterval(left,100);
+//   var index=$(this).index();
+//    console.log($(this).index());
+//    console.log(i)
+//    if(index==i){
+//        clearInterval(time2);}
+},function () {
+    clearInterval(time2);
+    time=setInterval(right,3000);
+});
+</script>
